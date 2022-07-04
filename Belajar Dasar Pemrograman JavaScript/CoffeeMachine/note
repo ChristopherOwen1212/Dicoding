@@ -1,0 +1,6 @@
+- Tujuan "scripts" di package.json biar bisa make npm run.
+    Contoh kalo npm run start --> jalanin function node index.js
+    kalo npm run test --> jalanin yang "echo \"Error: no test specified\" && exit 1"
+
+
+- Kalo mau import ato export module dengan cara ES6, di package.json harus ditambahin: "type": "module"
