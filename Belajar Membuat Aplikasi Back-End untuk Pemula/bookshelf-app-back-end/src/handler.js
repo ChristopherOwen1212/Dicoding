@@ -62,7 +62,7 @@ const getAllBooksHandler = (request) => {
   let filteredBooks = books;
 
   if (params.name) {
-    filteredBooks = filteredBooks.filter((n) => n.name.toLowerCase() === params.name.toLowerCase());
+    filteredBooks = filteredBooks.filter((n) => n.name.toLowerCase().includes(params.name.toLowerCase()));
   }
 
   if (parseInt(params.reading) === 0) {
@@ -80,7 +80,7 @@ const getAllBooksHandler = (request) => {
   return {
     status: 'success',
     data: {
-      books: filteredBooks,
+      books: filteredBooks.map(({ id, name, publisher }) => ({ id, name, publisher })),
     },
   };
 };
