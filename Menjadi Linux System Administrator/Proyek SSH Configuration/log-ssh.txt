@@ -1,0 +1,22 @@
+journalctl -u ssh.service
+-- Logs begin at Sun 2020-11-29 12:09:30 CET, end at Sat 2023-01-14 18:27:05 CET. --
+Jan 14 18:03:45 onworks-Standard-PC-i440FX-PIIX-1996 systemd[1]: Starting OpenBSD Secure Shell server...
+Jan 14 18:03:45 onworks-Standard-PC-i440FX-PIIX-1996 sshd[4149]: Server listening on 0.0.0.0 port 22.
+Jan 14 18:03:45 onworks-Standard-PC-i440FX-PIIX-1996 sshd[4149]: Server listening on :: port 22.
+Jan 14 18:03:45 onworks-Standard-PC-i440FX-PIIX-1996 systemd[1]: Started OpenBSD Secure Shell server.
+Jan 14 18:06:31 onworks-Standard-PC-i440FX-PIIX-1996 sshd[5848]: Connection closed by authenticating us>
+Jan 14 18:06:36 onworks-Standard-PC-i440FX-PIIX-1996 sshd[5873]: Accepted password for dicoding from 12>
+Jan 14 18:06:36 onworks-Standard-PC-i440FX-PIIX-1996 sshd[5873]: pam_unix(sshd:session): session opened>
+Jan 14 18:07:19 onworks-Standard-PC-i440FX-PIIX-1996 sshd[6146]: Accepted publickey for dicoding from 1>
+Jan 14 18:07:19 onworks-Standard-PC-i440FX-PIIX-1996 sshd[6146]: pam_unix(sshd:session): session opened>
+Jan 14 18:09:57 onworks-Standard-PC-i440FX-PIIX-1996 sshd[4149]: Received signal 15; terminating.
+Jan 14 18:09:57 onworks-Standard-PC-i440FX-PIIX-1996 systemd[1]: Stopping OpenBSD Secure Shell server...
+Jan 14 18:09:57 onworks-Standard-PC-i440FX-PIIX-1996 systemd[1]: ssh.service: Succeeded.
+Jan 14 18:09:57 onworks-Standard-PC-i440FX-PIIX-1996 systemd[1]: Stopped OpenBSD Secure Shell server.
+Jan 14 18:09:57 onworks-Standard-PC-i440FX-PIIX-1996 systemd[1]: Starting OpenBSD Secure Shell server...
+Jan 14 18:09:57 onworks-Standard-PC-i440FX-PIIX-1996 sshd[6507]: Server listening on 0.0.0.0 port 2000.
+Jan 14 18:09:57 onworks-Standard-PC-i440FX-PIIX-1996 sshd[6507]: Server listening on :: port 2000.
+Jan 14 18:09:57 onworks-Standard-PC-i440FX-PIIX-1996 systemd[1]: Started OpenBSD Secure Shell server.
+Jan 14 18:26:24 onworks-Standard-PC-i440FX-PIIX-1996 sshd[7512]: Accepted publickey for dicoding from 1>
+Jan 14 18:26:24 onworks-Standard-PC-i440FX-PIIX-1996 sshd[7512]: pam_unix(sshd:session): session opened>
+lines 1-20/20 (END)

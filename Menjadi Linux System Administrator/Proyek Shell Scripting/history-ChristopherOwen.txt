@@ -1,0 +1,160 @@
+~$ free -m -t
+              total        used        free      shared  buff/cache   available
+Mem:          32104        1861       14965           3       15277       28603
+Swap:             0           0           0
+Total:        32104        1861       14965
+~$ df -h -BG
+Filesystem                                                                                       1G-blocks  Used Available Use% Mounted on
+overlay                                                                                               121G   10G      111G   8% /
+tmpfs                                                                                                   1G    0G        1G   0% /dev
+tmpfs                                                                                                  16G    0G       16G   0% /sys/fs/cgroup
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/sbin                                       1833G 1428G      396G  79% /sbin
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/bin                                        1833G 1428G      396G  79% /bin
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/lib                                        1833G 1428G      396G  79% /lib
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/lib64                                      1833G 1428G      396G  79% /lib64
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/libx32                                     1833G 1428G      396G  79% /libx32
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/srv                                        1833G 1428G      396G  79% /srv
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/etc                                        1833G 1428G      396G  79% /etc
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/lib32                                      1833G 1428G      396G  79% /lib32
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/var                                        1833G 1428G      396G  79% /var
+10.105.159.225:/ubuntu-2004_2023-01-08                                                               1833G 1428G      396G  79% /ext
+10.105.159.225:/project/2023-01-09-033249-new-lru-cache                                              1833G 1428G      396G  79% /cocalc
+tmpfs                                                                                                  16G    0G       16G   0% /data
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/opt                                        1833G 1428G      396G  79% /opt
+tmpfs                                                                                                  16G    1G       16G   1% /tmp
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/usr                                        1833G 1428G      396G  79% /usr
+tmpfs                                                                                                  16G    1G       16G   1% /secrets/gateway-public
+kucalc-default-project-4ccb4e0c-f585-4c49-bbae-c5cffc4a285e                                             3G    1G        3G   1% /home/user
+/var/lib/kubelet/pods/a253aef5-2723-4636-a757-cbe4d90ea6a6/volumes/cocalc~zfs/home/.zfs/snapshot        3G    1G        3G   1% /home/user/.snapshots
+tmpfs                                                                                                  16G    1G       16G   1% /secrets/secret-token
+/dev/sda1                                                                                             121G   10G      111G   8% /etc/hosts
+shm                                                                                                     1G    0G        1G   0% /dev/shm
+tmpfs                                                                                                  16G    0G       16G   0% /proc/acpi
+tmpfs                                                                                                  16G    0G       16G   0% /proc/scsi
+tmpfs                                                                                                  16G    0G       16G   0% /sys/firmware
+~$ df -h --output=Filesystem,Use%
+df: option --output: field ‘Filesystem’ unknown
+Try 'df --help' for more information.
+~$ df --help
+Usage: df [OPTION]... [FILE]...
+Show information about the file system on which each FILE resides,
+or all file systems by default.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -a, --all             include pseudo, duplicate, inaccessible file systems
+  -B, --block-size=SIZE  scale sizes by SIZE before printing them; e.g.,
+                           '-BM' prints sizes in units of 1,048,576 bytes;
+                           see SIZE format below
+  -h, --human-readable  print sizes in powers of 1024 (e.g., 1023M)
+  -H, --si              print sizes in powers of 1000 (e.g., 1.1G)
+  -i, --inodes          list inode information instead of block usage
+  -k                    like --block-size=1K
+  -l, --local           limit listing to local file systems
+      --no-sync         do not invoke sync before getting usage info (default)
+      --output[=FIELD_LIST]  use the output format defined by FIELD_LIST,
+                               or print all fields if FIELD_LIST is omitted.
+  -P, --portability     use the POSIX output format
+      --sync            invoke sync before getting usage info
+      --total           elide all entries insignificant to available space,
+                          and produce a grand total
+  -t, --type=TYPE       limit listing to file systems of type TYPE
+  -T, --print-type      print file system type
+  -x, --exclude-type=TYPE   limit listing to file systems not of type TYPE
+  -v                    (ignored)
+      --help     display this help and exit
+      --version  output version information and exit
+
+Display values are in units of the first available SIZE from --block-size,
+and the DF_BLOCK_SIZE, BLOCK_SIZE and BLOCKSIZE environment variables.
+Otherwise, units default to 1024 bytes (or 512 if POSIXLY_CORRECT is set).
+
+The SIZE argument is an integer and optional unit (example: 10K is 10*1024).
+Units are K,M,G,T,P,E,Z,Y (powers of 1024) or KB,MB,... (powers of 1000).
+
+FIELD_LIST is a comma-separated list of columns to be included.  Valid
+field names are: 'source', 'fstype', 'itotal', 'iused', 'iavail', 'ipcent',
+'size', 'used', 'avail', 'pcent', 'file' and 'target' (see info page).
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report df translation bugs to <https://translationproject.org/team/>
+Full documentation at: <https://www.gnu.org/software/coreutils/df>
+or available locally via: info '(coreutils) df invocation'
+~$ df -h -BG --output=source,pcent -x tmpfs
+Filesystem                                                                                       Use%
+overlay                                                                                            8%
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/sbin                                    79%
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/bin                                     79%
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/lib                                     79%
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/lib64                                   79%
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/libx32                                  79%
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/srv                                     79%
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/etc                                     79%
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/lib32                                   79%
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/var                                     79%
+10.105.159.225:/ubuntu-2004_2023-01-08                                                            79%
+10.105.159.225:/project/2023-01-09-033249-new-lru-cache                                           79%
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/opt                                     79%
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/usr                                     79%
+kucalc-default-project-4ccb4e0c-f585-4c49-bbae-c5cffc4a285e                                        1%
+/var/lib/kubelet/pods/a253aef5-2723-4636-a757-cbe4d90ea6a6/volumes/cocalc~zfs/home/.zfs/snapshot   1%
+/dev/sda1                                                                                          8%
+~$ nano script-ChristopherOwen.sh
+~$ ls
+ 2023-01-13-155626.term  'Terminal 1.term'   script-ChristopherOwen.sh
+~$ chmod +x script-ChristopherOwen.sh
+~$ ./script-ChristopherOwen.sh
+Menampilkan ukuran memory pada sistem dalam satuan megabytes
+              total        used        free      shared  buff/cache   available
+Mem:          32104        1836       14980           3       15286       28628
+Swap:             0           0           0
+Total:        32104        1836       14980
+
+Menampilkan penggunaan ruang disk pada filesystem dalam satuan gigabytes
+Filesystem                                                                                       1G-blocks  Used Available Use% Mounted on
+overlay                                                                                               121G   10G      111G   8% /
+tmpfs                                                                                                   1G    0G        1G   0% /dev
+tmpfs                                                                                                  16G    0G       16G   0% /sys/fs/cgroup
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/sbin                                       1833G 1428G      396G  79% /sbin
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/bin                                        1833G 1428G      396G  79% /bin
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/lib                                        1833G 1428G      396G  79% /lib
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/lib64                                      1833G 1428G      396G  79% /lib64
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/libx32                                     1833G 1428G      396G  79% /libx32
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/srv                                        1833G 1428G      396G  79% /srv
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/etc                                        1833G 1428G      396G  79% /etc
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/lib32                                      1833G 1428G      396G  79% /lib32
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/var                                        1833G 1428G      396G  79% /var
+10.105.159.225:/ubuntu-2004_2023-01-08                                                               1833G 1428G      396G  79% /ext
+10.105.159.225:/project/2023-01-09-033249-new-lru-cache                                              1833G 1428G      396G  79% /cocalc
+tmpfs                                                                                                  16G    0G       16G   0% /data
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/opt                                        1833G 1428G      396G  79% /opt
+tmpfs                                                                                                  16G    1G       16G   1% /tmp
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/usr                                        1833G 1428G      396G  79% /usr
+tmpfs                                                                                                  16G    1G       16G   1% /secrets/gateway-public
+kucalc-default-project-4ccb4e0c-f585-4c49-bbae-c5cffc4a285e                                             3G    1G        3G   1% /home/user
+/var/lib/kubelet/pods/a253aef5-2723-4636-a757-cbe4d90ea6a6/volumes/cocalc~zfs/home/.zfs/snapshot        3G    1G        3G   1% /home/user/.snapshots
+tmpfs                                                                                                  16G    1G       16G   1% /secrets/secret-token
+/dev/sda1                                                                                             121G   10G      111G   8% /etc/hosts
+shm                                                                                                     1G    0G        1G   0% /dev/shm
+tmpfs                                                                                                  16G    0G       16G   0% /proc/acpi
+tmpfs                                                                                                  16G    0G       16G   0% /proc/scsi
+tmpfs                                                                                                  16G    0G       16G   0% /sys/firmware
+
+Menampilkan penggunaan ruang disk pada filesystem hanya untuk kolom Filesystem dan Use% dan tanpa tmpfs
+Filesystem                                                                                       Use%
+overlay                                                                                            8%
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/sbin                                    79%
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/bin                                     79%
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/lib                                     79%
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/lib64                                   79%
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/libx32                                  79%
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/srv                                     79%
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/etc                                     79%
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/lib32                                   79%
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/var                                     79%
+10.105.159.225:/ubuntu-2004_2023-01-08                                                            79%
+10.105.159.225:/project/2023-01-09-033249-new-lru-cache                                           79%
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/opt                                     79%
+10.105.159.225:/ubuntu-2004_2023-01-08/linux/Ubuntu-20.04/usr                                     79%
+kucalc-default-project-4ccb4e0c-f585-4c49-bbae-c5cffc4a285e                                        1%
+/var/lib/kubelet/pods/a253aef5-2723-4636-a757-cbe4d90ea6a6/volumes/cocalc~zfs/home/.zfs/snapshot   1%
+/dev/sda1                                                                                          8%
